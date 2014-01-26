@@ -8,8 +8,26 @@ $email=$_POST["email"];
 $institucion=$_POST["institucion"];
 $matricula=$_POST["matricula"];
 echo $matricula;
-if( isset ($matricula)){
-$check=mysql_query("select * from usuarios_int where matricula= '$matricula'");
+//falta validar que no se repita el correo electronico
+if(empty ($matricula)){
+
+	$insert=mysql_query("insert into usuarios_ext(nombre,apellidos,password,email ) values(  '$nombre', 
+			'$apellidos',
+			'$password',
+			'$email' )") or die (mysql_error());
+				
+	
+	
+	
+	
+	
+	
+	}
+	
+	
+else{
+
+	$check=mysql_query("select * from usuarios_int where matricula= '$matricula'");
 
 if(mysql_num_rows($check)>=1){
 	?> <script> window.history.back();</script> 
@@ -19,18 +37,12 @@ if(mysql_num_rows($check)>=1){
 	
 else 
 {
-	$insert=mysql_query("insert into usuarios_ext(nombre,apellidos,password,email, matricula ) values(  '$nombre', 
+	$insert=mysql_query("insert into usuarios_int(nombre,apellidos,password,email, matricula ) values(  '$nombre', 
 			'$apellidos',
 			'$password',
 			'$email',
 			'$matricula' )") or die (mysql_error());
+			
 	
 	}
-	
-	
-	
-	
-	
-	
-	
 	}
