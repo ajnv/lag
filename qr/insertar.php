@@ -8,7 +8,6 @@ $email=$_POST["email"];
 $institucion=$_POST["institucion"];
 $matricula=$_POST["matricula"];
 echo $matricula;
-//falta validar que no se repita el correo electronico
 if(empty ($matricula)){
 
 	$insert=mysql_query("insert into usuarios_ext(nombre,apellidos,password,email ) values(  '$nombre', 

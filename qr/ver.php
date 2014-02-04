@@ -3,4 +3,8 @@ $_GET['ver'];?>
 
 <h1><?php
 echo "registro exitoso de: ".$_GET['ver'];
-?></h1>
+?>
+<a href="index.php">entra aqui</a>
+
+
+</h1>
