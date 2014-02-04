@@ -18,8 +18,8 @@ if ((!isset($nombre)) || (!isset($apellidos)) || (!isset($clave)) || (!isset($cl
 ///// Validar que las variables obligatorias tengan algun valor y correspondan con la longitud esperada en la BD./////
 
 if (($nombre==NULL || $apellidos==NULL || $clave==NULL || $clavec==NULL || $correo==NULL || $correoc==NULL || $matricula==NULL) || 
-		((strlen($nombre)<81) && (strlen($apellidos)<80) && (strlen($clave)<15) && (strlen($clavec)<15) && (strlen($correo)<51) && (strlen($correoc)<51)
-		&& (strlen($matricula)!=6))) {
+		((strlen($nombre)>81) || (strlen($apellidos)>80) || (strlen($clave)>15) || (strlen($clavec)>15) || (strlen($correo)>51) || (strlen($correoc)>51)
+		|| (strlen($matricula)!=6))) {
 
 	// Variables obligatorias incompletas o alteracion del formulario para saltar validacion.
 	header("location: registro_int.php");
