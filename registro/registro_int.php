@@ -69,6 +69,19 @@ function checkEmails(){
       document.getElementById("txtHint_correoch").innerHTML = "";
     }
 }
+
+function checkOption(str){
+  if (str == "1"){
+    document.getElementById("lb_matricula").hidden = false;
+    document.getElementById("txt_matricula").hidden = false;
+    document.getElementById("txt_matricula").required = true;
+  }
+  else if (str == "0"){
+    document.getElementById("lb_matricula").hidden = true;
+    document.getElementById("txt_matricula").hidden = true;
+    document.getElementById("txt_matricula").required = false;
+  }
+}
 </script>
 </head>
 <body>
@@ -79,7 +92,7 @@ function checkEmails(){
     </tr>
   </table>
 <form name="registro_interno" action="registrar_int.php" method="post">
-<table align="center">
+<table align="center" id="registro">
   <tr>
   <td><label>Nombre:</label></td>
   <td><input type="text" name="txt_nombre" required></td>
@@ -119,8 +132,18 @@ function checkEmails(){
   <td><div id="txtHint_correoch"><b></b></div></td>
   </tr>
   <tr>
-   <td><label>Matricula:</label></td>
-   <td><input type="text" name="txt_matricula" maxlength="6" onkeyup="checkMatricula(this.value)" required="true" /></td>
+    <td><label>Soy alumno de la UPSLP?</label></td>
+    <td>
+      <select name="alumno" id="alumno" onchange="checkOption(this.value)" required>
+        <option value="" selected>Seleccionar</option>
+        <option value="1">Si</option>
+        <option value="0">No</option>
+      </select>
+    </td>
+  </tr>
+  <tr>
+   <td><label id="lb_matricula" hidden="true">Matricula:</label></td>
+   <td><input type="text" name="txt_matricula" id="txt_matricula" maxlength="6" onkeyup="checkMatricula(this.value)" required="false" hidden="true"/></td>
   </tr>
   <tr>
   <td><div id="txtHint_matricula"><b></b></div></td>
