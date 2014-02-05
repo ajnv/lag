@@ -80,6 +80,7 @@ function checkOption(str){
     document.getElementById("lb_matricula").hidden = true;
     document.getElementById("txt_matricula").hidden = true;
     document.getElementById("txt_matricula").required = false;
+    document.getElementById("txt_matricula").value = "";
   }
 }
 </script>
