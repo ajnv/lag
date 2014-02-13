@@ -131,8 +131,8 @@ if ($valido){
 		 			"values ('$nombre_completo', '$institucion')";
 
 		 		$consulta2 = "insert into usuarios_ext"
-		 			."(id, correo, clave_acceso, fecha_registro) "
-		 			."values (last_insert_id(), '$correo', '$clave', now())";
+		 			."(id, correo, clave_acceso, fecha_registro, activo) "
+		 			."values (last_insert_id(), '$correo', '$clave', now(), 0)";
 
 		 		$token = md5(date("Y-m-d H:i:s") . $correo);
 
