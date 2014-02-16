@@ -101,6 +101,7 @@ if ($valido){
 		} 
 		else {
 
+			$noLAG = false;
 			$clave = md5($clave);
 			if ($tipo_registro == 1){
 
@@ -111,6 +112,7 @@ if ($valido){
 					"(matricula, periodo, datos_completos) ".
 					"values('$matricula', '20141S', 0)";
 					echo "No existe, insertar pero incompleto.";
+					$noLAG = true;
 				}
 
 				$consulta = "insert into usuarios_int"
@@ -151,9 +153,11 @@ if ($valido){
 			if (!$mq2){
 				$error=1; // error.
 			}
-			$mq3 = mysqli_query($connect, $consulta3);
-			if (!$mq3){
-				$error=1; // error.
+			if (($tipo_registro == 1 && $noLAG) || $tipo_registro == 2){
+				$mq3 = mysqli_query($connect, $consulta3);
+				if (!$mq3){
+					$error=1; // error.
+				}
 			}
 			if ($error){
 				mysqli_query($connect, "ROLLBACK"); // Deshacer cambios.
