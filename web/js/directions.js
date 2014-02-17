@@ -1,7 +1,7 @@
 var directionDisplay;
 var directionsService = new google.maps.DirectionsService();
 function initialize() {
-  var latlng = new google.maps.LatLng(37.791649,-122.394395);
+  var latlng = new google.maps.LatLng(22.1218879,-100.985215);
   // set direction render options
   var rendererOptions = { draggable: true };
   directionsDisplay = new google.maps.DirectionsRenderer(rendererOptions);
@@ -31,7 +31,7 @@ function calcRoute() {
   if (travelMode == 'TRANSIT') {
     via = ''; // if the travel mode is transit, don't use the via waypoint because that will not work
   }
-  var end = "37.791649,-122.394395"; // endpoint is a geolocation
+  var end = "22.1218879,-100.985215"; // endpoint is a geolocation
   var waypoints = []; // init an empty waypoints array
   if (via != '') {
     // if waypoints (via) are set, add them to the waypoints array
@@ -44,7 +44,7 @@ function calcRoute() {
     origin: start,
     destination: end,
     waypoints: waypoints,
-    unitSystem: google.maps.UnitSystem.IMPERIAL,
+    unitSystem: google.maps.UnitSystem.metric,
     travelMode: google.maps.DirectionsTravelMode[travelMode]
   };
   directionsService.route(request, function(response, status) {
