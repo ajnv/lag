@@ -1,5 +1,6 @@
 <?php
-
+include('enviarmail.php');
+include('conexion.php');
 $clave=$_POST['txt_clave'];
 $clavec=$_POST['txt_clavec'];
 $tipo=$_POST['alumno'];
@@ -26,7 +27,7 @@ if (!isset($tipo) || !isset($clave) || !isset($clavec)){
 if ($tipo!=NULL && $tipo=='1' && (strlen($tipo)==1) && is_numeric($tipo) 
 		&& isset($_POST['txt_matricula']) && $_POST['txt_matricula']!=NULL &&
 		(strlen($_POST['txt_matricula'])==6) && is_numeric($_POST['txt_matricula'])){
-	
+	 mysql_connect("localhost", "root", "", "lag");//esta linea se agrego por que en los servidores marca error por que necesitamos iniciar una conexion antes de mysql_real_escape_string
 	$matricula=mysql_real_escape_string($_POST['txt_matricula']);
 	$tipo_registro = 1; // Registro Interno.
 } 
@@ -41,7 +42,7 @@ elseif ($tipo!=NULL && $tipo=='0' && (strlen($tipo)==1) && is_numeric($tipo)
 		(strlen($_POST['txt_correo'])<51) && 
 		isset($_POST['txt_correoc']) && $_POST['txt_correoc']!=NULL &&
 		(strlen($_POST['txt_correoc'])<51)){
-	
+	mysql_connect("localhost", "root", "", "lag");//se agrega esta linea par que funcione en el servidor en linea mysql_real_escape_string
 	$institucion = mysql_real_escape_string($_POST['txt_institucion']);
 	$nombre = mysql_real_escape_string($_POST['txt_nombre']);
 	$apellidos = mysql_real_escape_string($_POST['txt_apellidos']);
@@ -74,8 +75,8 @@ if ($valido){
 
 	if ($clave == $clavec){
 
-		include("conexion.php");
-
+		
+	
 
 		if ($tipo_registro == 1){
 			$correoUPSLP = $matricula . "@upslp.edu.mx";
@@ -165,8 +166,22 @@ if ($valido){
 			} else {
 				mysqli_query($connect, "COMMIT"); // Guardar cambios.
 				echo "Transaccion exitosa";
+					if($tipo_registro==1){
+						$correo=$matricula."@upslp.edu.mx";
+						email($correo,$token);
+						}
+						
+					elseif($tipo_registro==2){
+						
+						email($correo,$token);
+						}	
+				
+				
+				
 			}
 			mysqli_close($connect); // Cerrar conexion.*/
+			
+			
 			
 		}
 	} else {
