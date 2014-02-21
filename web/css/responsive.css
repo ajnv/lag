@@ -304,7 +304,7 @@ ul.address {
 /* iPads (portrait and landscape) ----------- */
 @media screen and (min-width : 768px) and (max-width : 1024px) {
 html, body, div, p, table, tr, td, th, tbody, tfoot, ul, li, ol, dl, dd, dt, fieldset, blockquote, cite, input, select, textarea, button, a, section, article, aside, header, footer, nav {
-	font-size: 13px;
+	font-size: 50%;
 }
 }
 /* iPads (portrait and landscape) ----------- */

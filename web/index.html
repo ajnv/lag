@@ -32,6 +32,157 @@
 <link rel="apple-touch-icon" sizes="114x114" href="../img/icons/apple-touch-icon-114x114.png">
 <link rel="apple-touch-icon" sizes="144x144" href="../img/icons/apple-touch-icon.png">
 <script type="text/javascript" src="js/modernizr-1.0.min.js"></script>
+<script>
+function checkMatricula(str)
+{
+if (str=="")
+  {
+  document.getElementById("txtHint_matricula").innerHTML="";
+  return;
+  }
+if (window.XMLHttpRequest)
+  {// code for IE7+, Firefox, Chrome, Opera, Safari
+  xmlhttp=new XMLHttpRequest();
+  }
+else
+  {// code for IE6, IE5
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+xmlhttp.onreadystatechange=function()
+  {
+  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+    {
+    document.getElementById("txtHint_matricula").innerHTML=xmlhttp.responseText;
+    }
+  }
+xmlhttp.open("GET","checkmatricula.php?q="+str,true);
+xmlhttp.send();
+}
+
+function checkCorreo(str)
+{
+if (str=="")
+  {
+  document.getElementById("txtHint_correo").innerHTML="";
+  return;
+  }
+if (window.XMLHttpRequest)
+  {// code for IE7+, Firefox, Chrome, Opera, Safari
+  xmlhttp=new XMLHttpRequest();
+  }
+else
+  {// code for IE6, IE5
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+xmlhttp.onreadystatechange=function()
+  {
+  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+    {
+    document.getElementById("txtHint_correo").innerHTML=xmlhttp.responseText;
+    }
+  }
+xmlhttp.open("GET","checkcorreo.php?q="+str,true);
+xmlhttp.send();
+}
+
+function checkPasswords(){
+  if (document.getElementById("txt_clave").value != document.getElementById("txt_clavec").value){
+    document.getElementById("txtHint_clave").innerHTML = "Verifique confirmacion de contrase&ntilde;a";
+  } else {
+    document.getElementById("txtHint_clave").innerHTML = "";
+  }
+}
+
+function checkEmails(){
+    if (document.getElementById("txt_correoc").value != document.getElementById("txt_correo").value)
+    {
+      document.getElementById("txtHint_correoch").innerHTML = "Verifique confirmacion de correo electronico";
+    } else {
+      document.getElementById("txtHint_correoch").innerHTML = "";
+    }
+}
+
+function checkOption(str){
+  if (str == "1"){
+    document.getElementById("lb_matricula").hidden = false;
+    document.getElementById("txt_matricula").hidden = false;
+    document.getElementById("txt_matricula").required = true;
+     document.getElementById("txt_institucion").required = false;
+    document.getElementById("lb_institucion").hidden = true;
+    document.getElementById("txt_institucion").hidden = true;
+
+    document.getElementById("lb_nombre").hidden = true;
+    document.getElementById("lb_apellidos").hidden = true;
+    document.getElementById("txt_nombre").hidden = true;
+    document.getElementById("txt_apellidos").hidden = true;
+    document.getElementById("txt_nombre").required = false;
+    document.getElementById("txt_apellidos").required = false;
+
+    document.getElementById("lb_correo").hidden = true;
+    document.getElementById("lb_correoc").hidden = true;
+    document.getElementById("txt_correo").hidden = true;
+    document.getElementById("txt_correoc").hidden = true;
+    document.getElementById("txt_correo").required = false;
+    document.getElementById("txt_correoc").required = false;
+
+    document.getElementById("txtHint_correo").innerHTML = "";
+    document.getElementById("txtHint_correoch").innerHTML = "";
+
+  }
+  else if (str == "0"){
+    document.getElementById("lb_matricula").hidden = true;
+    document.getElementById("txt_matricula").hidden = true;
+    document.getElementById("txt_matricula").required = false;
+    document.getElementById("txt_matricula").value = "";
+    document.getElementById("txt_institucion").required = true;
+    document.getElementById("lb_institucion").hidden = false;
+    document.getElementById("txt_institucion").hidden = false;
+
+    document.getElementById("lb_nombre").hidden = false;
+    document.getElementById("lb_apellidos").hidden = false;
+    document.getElementById("txt_nombre").hidden = false;
+    document.getElementById("txt_apellidos").hidden = false;
+    document.getElementById("txt_nombre").required = true;
+    document.getElementById("txt_apellidos").required = true;
+
+    document.getElementById("lb_correo").hidden = false;
+    document.getElementById("lb_correoc").hidden = false;
+    document.getElementById("txt_correo").hidden = false;
+    document.getElementById("txt_correoc").hidden = false;
+    document.getElementById("txt_correo").required = true;
+    document.getElementById("txt_correoc").required = true;
+
+    document.getElementById("txtHint_matricula").innerHTML = "";
+  }
+  else{
+    document.getElementById("lb_matricula").hidden = true;
+    document.getElementById("txt_matricula").hidden = true;
+    document.getElementById("txt_matricula").required = false;
+    document.getElementById("txt_matricula").value = "";
+    document.getElementById("txt_institucion").required = false;
+    document.getElementById("lb_institucion").hidden = true;
+    document.getElementById("txt_institucion").hidden = true;
+
+    document.getElementById("lb_nombre").hidden = true;
+    document.getElementById("lb_apellidos").hidden = true;
+    document.getElementById("txt_nombre").hidden = true;
+    document.getElementById("txt_apellidos").hidden = true;
+    document.getElementById("txt_nombre").required = false;
+    document.getElementById("txt_apellidos").required = false;
+
+    document.getElementById("lb_correo").hidden = true;
+    document.getElementById("lb_correoc").hidden = true;
+    document.getElementById("txt_correo").hidden = true;
+    document.getElementById("txt_correoc").hidden = true;
+    document.getElementById("txt_correo").required = false;
+    document.getElementById("txt_correoc").required = false;
+
+    document.getElementById("txtHint_correo").innerHTML = "";
+    document.getElementById("txtHint_correoch").innerHTML = "";
+    document.getElementById("txtHint_matricula").innerHTML = "";
+  }
+}
+</script>
 </head>
 
 <body onLoad="initialize()">
@@ -113,25 +264,17 @@
             
             
           </div>
-          <div class="col-md-2 col-sm-12 text-center"> <a href="#" title="Register For This Event" class="btn register-trigger"><i class="fa fa-plus-circle"></i> Registro</a>
-            <h3 class="regHeading">Registrate Para <span>Este Evento</span></h3>
-            <form id="register" method="post" action="http://www.saptarang.org/TF/onevent/01/form/register.php">
-            	<div class="field-wrapper">
-                    <div class="form-row">
-                      <input type="text" class="form-control" id="name" name="name" placeholder="Dato 1" />
-                    </div>
-                    <div class="form-row">
-                      <input type="tel" class="form-control" id="phone" name="phone" placeholder="Dato 2" />
-                    </div>
-                    <div class="form-row">
-                      <input type="email" class="form-control" id="email" name="email" placeholder="Dato 3" />
-                    </div>
-                    <div class="form-row clearfix">
-                      <textarea cols="60" rows="3" id="comment" name="comment" class="form-control" placeholder="Dato 4"></textarea>
-                    </div>
-                    <input type="submit" value="Submit" class="btn btn-custom btn-lg" id="submit" name="submit" />
-               </div>
-            </form>
+          <div class="col-md-2 col-sm-12 text-center"> <a href="#" class="btn register-trigger"><i class="fa fa-plus-circle"></i> Registro</a>
+            
+           
+           
+          
+           
+
+
+
+
+
           </div>
         </div>
         <!--end-row--> 
@@ -184,54 +327,191 @@
           <p>Registrate para en la parte superior y una vez confirmada tu sesión podras realizar el pago para el evento </p>
           <div class="row clearfix">
             <div class="col-md-4 col-sm-12 schedule-box">
-              <h6 class="section-head"><span>Día 1</span> 7 Horas</h6>
+              <h6 class="section-head"><span>Día 1</span>MIERCOLES</h6>
               <ul class="activities">
                 <li>
-                  <h6><strong>10:00 am</strong> -Ponencia 1 </h6>
-                  <p>Descripcion</p>
+                  <h6><strong> 7:30-7:50</strong>- Registro </h6>
                 </li>
                 <li>
-                  <h6><strong>12:30 pm</strong> - Descanso </h6>
-                  <p>actividad</p>
+                  <h6><strong>8:00 - 8:20</strong> - Inauguración </h6>
+               
                 </li>
                 <li>
-                  <h6><strong>1:30 pm</strong> - PoneNci</h6>
-                  <p>DESCRIPCION</p>
+                  <h6><strong>8:20 - 8:50</strong> - Show de apertura</h6>
+                 
                 </li>
+                
+                
+                 <li>
+                  <h6><strong>8:50 - 10:20</strong> - L.O.S. Sueños</h6>
+                 
+                </li>
+                
+                
+                 <li>
+                  <h6><strong>10:20 - 10:40</strong> - Coffee break</h6>
+                  
+                </li>
+                
+                
+                 <li>
+                  <h6><strong>10:50 - 12:20</strong> - Carlos Llanera</h6>
+           
+                </li>
+                
+                
+                 <li>
+                  <h6><strong>12:20 - 13:00</strong> - Show/Expolitec</h6>
+              
+                </li>
+                
+                
+                <li>
+                  <h6><strong>13:00 - 15:30</strong> - Comida</h6>
+              
+                </li>
+                <li>
+                  <h6><strong>15:30 - 15:50</strong> - 2do registro</h6>
+              
+                </li>
+                <li>
+                  <h6><strong>15:50 - 17:20</strong> - Jonathan Heath</h6>
+              
+                </li>
+                <li>
+                  <h6><strong>17:20 - 18:00</strong> - Show</h6>
+              
+                </li>
+                
+                
+                <li>
+                  <h6><strong>18:00 - 19:30</strong> - Pendiente </h6>
+              
+                </li>
+                
+                
+                
               </ul>
             </div>
             <div class="col-md-4 col-sm-12 schedule-box">
-              <h6 class="section-head"><span>Día 2</span> 7 Horas</h6>
+              <h6 class="section-head"><span>Día 2</span> JUEVES</h6>
               <ul class="activities">
                 <li>
-                  <h6><strong>10:00 am</strong> - Ponencia </h6>
-                  <p>Descripcion</p>
+                  <h6><strong>7:30 - 7:50</strong> - Registro</h6>
+                  
                 </li>
                 <li>
-                  <h6><strong>12:30 pm</strong> - Descanso </h6>
-                  <p>Actividad</p>
+                  <h6><strong>8:00 - 10:00</strong> - Talleres</h6>
+                  
                 </li>
                 <li>
-                  <h6><strong>1:30 pm</strong> - Ponencia </h6>
-                  <p>Descripcion</p>
+                  <h6><strong>10:00 - 10:30</strong> - Coffee break </h6>
+                  
                 </li>
+                
+                <li>
+                  <h6><strong>10:30 - 12:30</strong> - Talleres</h6>
+                  
+                </li>
+                
+                
+                <li>
+                  <h6><strong>12:30 - 14:30</strong> - L.O.S. Sueños </h6>
+                  
+                </li>
+                <li>
+                  <h6><strong>14:30 - 15:50</strong> - Comida </h6>
+                  
+                </li>
+                
+                
+                
+                <li>
+                  <h6><strong>15:50 - 16:20</strong> - 2do registro</h6>
+                  
+                </li>
+                
+                
+                
+                      <li>
+                  <h6><strong>16:20 - 18:00</strong> - Alejandro Camino: Softtek </h6>
+                  
+                </li>
+                
+                      <li>
+                  <h6><strong>18:00 - 19:30</strong> - Fernando Botella </h6>
+                  
+                </li>
+                    
+                
+                
+                
+                
+                
+                
+                
+                
               </ul>
             </div>
+            
+            
+            
+            
+            
+            
+            
             <div class="col-md-4 col-sm-12 schedule-box">
-              <h6 class="section-head"><span>Día 3</span> 7 Horas</h6>
+              <h6 class="section-head"><span>Día 3</span> VIERNES</h6>
               <ul class="activities">
                 <li>
-                  <h6><strong>10:00 am</strong> - Ponencia</h6>
-                  <p>Descripcion</p>
+                  <h6><strong>7:30 - 7:50</strong> - Registro</h6>
+                  
                 </li>
                 <li>
-                  <h6><strong>12:30 pm</strong> - Descanso </h6>
-                  <p>Actividad</p>
+                  <h6><strong>8:00 - 11:00</strong> - L.O.S. Sueños</h6>
+                
                 </li>
                 <li>
-                  <h6><strong>1:30 pm</strong> - Ponencia </h6>
-                  <p>Descripcion</p>
+                  <h6><strong>11:00 - 11:30</strong> - Coffee break</h6>
+               
                 </li>
+               
+               <li>
+                  <h6><strong>11:30 - 13:30</strong> - Beto Castillo</h6>
+               
+                </li>
+                <li>
+                  <h6><strong>13:30 - 15:30</strong> - Comida</h6>
+               
+                </li>
+                <li>
+                  <h6><strong>16:00 - 17:30</strong> - Pendiente</h6>
+               
+                </li>
+                <li>
+                  <h6><strong>17:30 - 19:00</strong> - Denise Dresser</h6>
+               
+                </li>
+                <li>
+                  <h6><strong>19:00 - 19:30</strong> - Premiacion Expolitec</h6>
+               
+                </li>
+                <li>
+                  <h6><strong>19:30-19:45</strong> - Clausura</h6>
+               
+                </li> 
+                
+                  </li>
+                <li>
+                  <h6><strong>19:45 - 20:30</strong> - Show de Clausura</h6>
+               
+                </li> 
+                
+                
+                
+                
+                
+                
               </ul>
             </div>
           </div>
@@ -240,8 +520,77 @@
         <!--end-event-schedule-content-->
         
         <div class="tab-pane" id="promo">
-          <h3><i class="fa fa-play-circle"></i> Video <span>Promocional</span></h3>
-          <iframe width="425" height="250" src="" frameborder="0" allowfullscreen></iframe>
+          
+          
+            <form name="registro" action="registrar.php" method="post">
+<table>
+  <tr>
+    <td><label>Soy alumno de la UPSLP?</label></td>
+    <td>
+      <select name="alumno" id="alumno" onChange="checkOption(this.value)" required>
+        <option value="" selected>Seleccionar</option>
+        <option value="1">Si</option>
+        <option value="0">No</option>
+      </select>
+    </td>
+  </tr>
+  <tr>
+   <td><label id="lb_matricula" hidden="true">Matricula:</label></td>
+   <td><input type="text" name="txt_matricula" id="txt_matricula" maxlength="6" onKeyUp="checkMatricula(this.value)" required hidden="true"/></td>
+  </tr>
+  <tr>
+  <td><div id="txtHint_matricula"><b></b></div></td>
+  </tr>
+  <tr>
+  <tr>
+   <td><label id="lb_institucion" hidden="true">Institucion:</label></td>
+   <td><input type="text" name="txt_institucion" id="txt_institucion" maxlength="15" required hidden="true"/></td>
+  </tr>
+  <tr>
+  <td><label id="lb_nombre" hidden="true">Nombre:</label></td>
+  <td><input type="text" name="txt_nombre" id="txt_nombre" required hidden="true"></td>
+  </tr>
+  <br>
+  <tr>
+  <td><label id="lb_apellidos" hidden="true">Apellidos:</label></td>
+  <td><input type="text" name="txt_apellidos" id="txt_apellidos" required hidden="true"></td>
+  </tr>
+  <br>
+  <tr>
+  <td><label>Contrase&ntilde;a:</label></td>
+  <td><input type="password" name="txt_clave" id="txt_clave" required></td>
+  </tr>
+  <br>
+  <tr>
+  <td><label>Confirmar Contrase&ntilde;a:</label></td>
+  <td><input type="password" name="txt_clavec" id="txt_clavec" onBlur="checkPasswords()" required ></td>
+  </tr><tr>
+  <td><div id="txtHint_clave"><b></b></div></td>
+  </tr>
+  <br>
+  <tr>
+  <td><label id="lb_correo" hidden="true">Correo electronico:</label>
+  <td><input type="text" name="txt_correo" id="txt_correo" onKeyUp="checkCorreo(this.value)" required hidden="true" /></td>
+  </tr>
+  <br>
+  <tr>
+  <td><label id="lb_correoc" hidden="true">Confirmar Correo electronico:</label>
+  <td><input type="text" name="txt_correoc" id="txt_correoc" onBlur="checkEmails()" required hidden="true"/></td>
+  </tr>
+  <br>
+  <tr>
+  <td><div id="txtHint_correo"><b></b></div></td>
+  </tr>
+  <tr>
+  <td><div id="txtHint_correoch"><b></b></div></td>
+  </tr>
+  <tr>
+    <td><input type="submit"/></td>
+    <td><input type="reset" onClick="document.location.reload(true);"/></td>
+  </tr>
+</table>
+</form>
+       
         </div>
         <!--end-event-schedule-content-->
         
@@ -302,13 +651,33 @@
   <div class="container">
     <div class="section clearfix bottom-margin">
       <header class="page-head colored clearfix">
-        <h2>Ponentes</h2>
-        <p class="text-muted">Descripcion de Ponencias  </p>
+        <h2>Directorio de Ponentes en la 10 Semana de Administración y Gestión </h2>
+        <p class="text-muted">Aquí podrás averiguar los perfiles de cada ponente en este evento. Próximamente descubre más conferencias. </p>
       </header>
       <article>
-        <p>Estos ponentes tendran participacion en este evento, todos unos expertos en su materia</p>
+        <p>OBJETIVOS GENERALES DEL EVENTO Y PONENCIAS. <BR>
+        <li>Proporcionar herramientas a los profesionistas para enfrentar los retos de un entorno globalizado. </li>
+
+
+<li>Conocer las nuevas reformas de México y analizar el impacto directo que tiene en la administración. 
+</li>
+<li>Crear consciencia de la implementación de la tecnología fusionada con la creatividad, abriéndose camino en las nuevas tendencias del mercado, así como la implementación de la misma en tiempo real a los procesos administrativos.</li>
+
+<li>Impulsar a los profesionistas a la implementación y desarrollo de sus proyectos Y Brindar al profesionista las estrategias para la consolidación de sus metas.</li>
+</p>
       </article>
     </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="row clearfix speaker-grid">
       <div class="col-md-4 col-sm-6 col-xs-6">
         <div class="section no-padding">
@@ -337,7 +706,7 @@ Fue director para Disney Special Events Group donde escribió y dirigió varios 
           <div class="speaker clearfix">
             <div class="col-md-10 col-sm-9 col-xs-9">
               <h6>BETO CASTILLO</h6>
-              <p> Licenciado en Ciencias de la Comunicación</p>
+              <p> Licenciado en Ciencias de la Comunicación.</p>
             </div>
             <div class="col-md-2 col-sm-3 col-xs-3 readIcon"> <i class="fa fa-chevron-circle-down"></i> </div>
           </div>
@@ -360,6 +729,11 @@ Trabajó para Cummins generation technologies desde el 2005 hasta finales del 20
           </div>
         </div>
       </div>
+      
+      
+      
+      
+      
       <!--end-col-md-4-->
       <div class="col-md-4 col-sm-6 col-xs-6">
         <div class="section no-padding no-margin">
@@ -378,13 +752,13 @@ Trabajó para Cummins generation technologies desde el 2005 hasta finales del 20
       <!--end-col-md-4-->
       <div class="col-md-4 col-sm-6 col-xs-6">
         <div class="section no-padding no-margin">
-          <figure> <img src="img/speakers/speaker1.jpg"alt="Speaker" class="img-responsive" />
-            <figcaption class="speaker-info">  </figcaption>
+          <figure> <img src="img/speakers/speaker5.jpg"alt="Speaker" class="img-responsive" />
+            <figcaption class="speaker-info">Tiene acumulado 30 años de experiencia en el análisis de la economía mexicana y sus perspectivas, tiempo durante el cual fue el Economista Principal de México para varias instituciones financieras globales y consultorías internacionales.  Empezó su carrera profesional construyendo modelos macroeconométricos para el gobierno mexicano y Wharton Econometrics.  </figcaption>
           </figure>
           <div class="speaker clearfix">
             <div class="col-md-10 col-sm-9 col-xs-9">
-              <h6>EJEMPLO</h6>
-              <p>EJEMPLO</p>
+              <h6>JONATHAN HEATH</h6>
+              <p>Doctorado en Economía, Universidad de Pennsylvania.</p>
             </div>
             <div class="col-md-2 col-sm-3 col-xs-3 readIcon"> <i class="fa fa-chevron-circle-down"></i> </div>
           </div>
@@ -393,23 +767,92 @@ Trabajó para Cummins generation technologies desde el 2005 hasta finales del 20
       <!--end-col-md-4-->
       <div class="col-md-4 col-sm-6 col-xs-6">
         <div class="section no-padding no-margin">
-          <figure> <img src="img/speakers/speaker1.jpg"alt="Speaker" class="img-responsive" />
-            <figcaption class="speaker-info">  </figcaption>
+          <figure> <img src="img/speakers/speaker8.jpg"alt="Speaker" class="img-responsive" />
+            <figcaption class="speaker-info"> <span class="center">Con más de 20 años de experiencia trabajando para proveedores de soluciones de TI, Alejandro Camino, ha dirigido el departamento de Marketing y Comunicación Global desde mayo del 2006. En su puesto actual es responsable del manejo de la comunicación corporativa a través de los Estados Unidos, Latinoamérica, Europa y Asia. </span></figcaption>
           </figure>
           <div class="speaker clearfix">
             <div class="col-md-10 col-sm-9 col-xs-9">
-              <h6>EJEMPLO</h6>
-              <p>EJEMPLO</p>
+              <h6>ALEJANDRO CAMINO</h6>
+              <p>En representación de Blanca Treviño, fundadora de Softtek.</p>
             </div>
             <div class="col-md-2 col-sm-3 col-xs-3 readIcon"> <i class="fa fa-chevron-circle-down"></i> </div>
           </div>
         </div>
       </div>
       <!--end-col-md-4--> 
+      
+      
+      <br><br>
+          
+      
+      
     </div>
     <!--end-row--> 
     
+    
+    
+    
+      
+    <div class="row clearfix speaker-grid">
+    <br>
+      <div class="col-md-4 col-sm-6 col-xs-6">
+        <div class="section no-padding">
+          <figure> <img src="img/speakers/speaker7.jpg"alt="Speaker" class="img-responsive" />
+            <figcaption class="speaker-info">Consultor de Formación y desarrollo, y speaker profesional. Es Licenciado en Ciencias Biológicas por la Universidad de Valencia, Máster en Dirección y Administración de Empresas por ICADE y Coach Ejecutivo Diplomado por EEC (Escuela Europea de Coaching).
+ </figcaption>
+          </figure>
+          <div class="speaker clearfix">
+            <div class="col-md-10 col-sm-9 col-xs-9">
+              <h6>FERNANDO BOTELLA</h6>
+              <p>Licenciado en Ciencias Biológicas por la Universidad de Valencia.</p>
+            </div>
+            <div class="col-md-2 col-sm-3 col-xs-3 readIcon"> <i class="fa fa-chevron-circle-down"></i> </div>
+          </div>
+        </div>
+      </div>
+      <!--end-col-md-4-->
+      
+      
+      
+      
+      
+      
+    
+      
+      
+      <br><br>
+          
+      
+      
+    </div>
+    <!--end-row--> 
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
   </div>
+  
 </section>
 <!--END-SPEAKERS--> 
 
@@ -477,8 +920,8 @@ Trabajó para Cummins generation technologies desde el 2005 hasta finales del 20
               </div>
             </div>
            
-              </div>
-            </div>
+          </div>
+        </div>
                     <!--end-of-column-6--> 
       
         <!--end-of-accordion--> 
@@ -504,9 +947,11 @@ Trabajó para Cummins generation technologies desde el 2005 hasta finales del 20
             <div class="column-content">
               <h3>Ubicación <span>Del Evento</span></h3>
               <ul class="address">
-                <li></li>
-                <li></li>
-                <li></li>
+<li> </li>
+<li>Instalaciones del GYM de la Universidad Politécnica de San Luis Potosí.</li>
+<li>Urbano Villalón 500. Predio La Ladrillera CP. 78363. San Luis Potosi S.L.P. Tel:(444) 812 63 67</li>
+<li>7, 8 y 9 de Mayo.</li>
+               
               </ul>
             </div>
           </div>
@@ -557,28 +1002,31 @@ Trabajó para Cummins generation technologies desde el 2005 hasta finales del 20
     <div class="section no-border">
       <header class="page-head colored clearfix">
         <div class="col-md-6 col-sm-12">
-          <h3>Subscribete a las  Noticias </h3>
-          <form action="#" id="subscribeForm" method="post">
-            <div class="form-row">
-              <input type="email" id="emailSubscribe" name="emailSubscribe" class="form-control" placeholder="Ingresa tu email" />
-              <input type="submit" id="sub-submit" name="sub-submit" value="" class="" />
-            </div>
-          </form>
+          <h3>Noticias en nuestras Redes Sociales</h3>
+          <a class="twitter-timeline" href="https://twitter.com/10maSemanaLAG" data-widget-id="436687567526711296">Tweets por @10maSemanaLAG</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+
         </div>
         <div class="col-md-5 col-md-offset-1 col-sm-12">
           <h3>Redes sociales</h3>
           <div class="social">
             <ul class="list-inline">
-              <li><a class="tips" href="#" title="Siguenos en Facebook"><i class="fa fa-facebook"></i></a></li>
-              <li><a class="tips" href="#" title="Siguennos en Twitter"><i class="fa fa-twitter"></i></a></li>
-              <li><a class="tips" href="#" title="Miranos en Instagram"><i class="fa fa-instagram"></i></a></li>
+
+              <li><a class="tips" href="https://www.facebook.com/10SemanaLAG" target="_blank" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+              <li><a class="tips" href="https://twitter.com/10maSemanaLAG" target="_blank" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+            
+              <li><a class="tips" href="#" title="Instagram"><i class="fa fa-instagram"></i></a></li>
+
+              
+
             </ul>
           </div>
           <!-- end social --> 
         </div>
       </header>
       <p class="text-center"> <span class="year"></span>  <br>
-        <a href="http://www.themeforest.net/user/saptarang?ref=saptarang"></a></p>
+        </p>
       <a href="#top" class="top"><i class="fa fa-arrow-up fa-lg"></i></a> </div>
     <!--end-of-section--> 
   </div>

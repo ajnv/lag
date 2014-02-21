@@ -383,7 +383,7 @@ DIV PARA CAMBIAR COLOR EN EL CRONOMETRO
 	font-size: 0.9em;
 }
 #register .form-row {
-	position: relative;
+	position: inherit;
 }
 #register .form-row .error {
 	position: absolute;
@@ -618,6 +618,7 @@ ul.li-blocks li strong {
 	-ms-transform: translate(0px, 0px);
 	-o-transform: translate(0px, 0px);
 	transform: translate(0px, 0px);
+	alignment-adjust: central;
 }
 /*================= PARTNERS ======================*/
 #partners a img {
