@@ -4,14 +4,12 @@ $clave=$_POST['txt_clave'];
 $clavec=$_POST['txt_clavec'];
 $tipo=$_POST['alumno'];
 
-///// Solo letras ///
+///// Funciones /////
 
-function isAlpha($s){
-	$reg = "/[^\\p{L}-]+/u";
-	$count = preg_match($reg, $s, $matches);
-	if ($count)
-		return 0;
-	return 1;
+function verifyString($cadena, $longMax, $tipo=0){
+	if ($tipo)
+		return isset($cadena) && ($cadena!=NULL) && (strlen($cadena)<=$longMax);
+	return isset($cadena) && ($cadena!=NULL) && (strlen($cadena)<=$longMax);
 }
 
 ///// Verificar si las variables estan definidas al momento de que el script es llamado.
@@ -30,17 +28,12 @@ if ($tipo!=NULL && $tipo=='1' && (strlen($tipo)==1) && is_numeric($tipo)
 	$matricula=mysql_real_escape_string($_POST['txt_matricula']);
 	$tipo_registro = 1; // Registro Interno.
 } 
-elseif ($tipo!=NULL && $tipo=='0' && (strlen($tipo)==1) && is_numeric($tipo)
-		&& isset($_POST['txt_institucion']) && $_POST['txt_institucion']!=NULL &&
-		(strlen($_POST['txt_institucion'])<15) && isAlpha($_POST['txt_institucion']) &&
-		isset($_POST['txt_nombre']) && $_POST['txt_nombre']!=NULL && (strlen($_POST['txt_nombre'])<60) &&
-		isAlpha($_POST['txt_nombre']) && 
-		isset($_POST['txt_apellidos']) && $_POST['txt_apellidos']!=NULL &&
-		(strlen($_POST['txt_apellidos'])<80) && isAlpha($_POST['txt_apellidos']) &&
-		isset($_POST['txt_correo']) && $_POST['txt_correo']!=NULL &&
-		(strlen($_POST['txt_correo'])<51) && 
-		isset($_POST['txt_correoc']) && $_POST['txt_correoc']!=NULL &&
-		(strlen($_POST['txt_correoc'])<51)){
+elseif ($tipo!=NULL && $tipo=='0' && (strlen($tipo)==1) && is_numeric($tipo) &&
+		verifyString($_POST['txt_institucion'], 15, 1) &&
+		verifyString($_POST['txt_nombre'], 60, 1) && 
+		verifyString($_POST['txt_apellidos'], 80, 1) &&
+		verifyString($_POST['txt_correo'], 51,0) &&
+		verifyString($_POST['txt_correoc'], 51,0)){
 	
 	$institucion = mysql_real_escape_string($_POST['txt_institucion']);
 	$nombre = mysql_real_escape_string($_POST['txt_nombre']);
@@ -84,9 +77,10 @@ if ($valido){
 			$existe = mysqli_num_rows($check_ma) || mysqli_num_rows($check_ma_ext);
 		}
 		elseif ($tipo_registro == 2){
-			//$check_ma = mysqli_query($connect, "select * from usuarios_int where correo = '$correo'");
+			$quitarDom = explode("@", $correo);
+			$check_ma = mysqli_query($connect, "select * from usuarios_int_inf where matricula = '$quitarDom[0]'");
 			$check_ma_ext = mysqli_query($connect, "select * from usuarios_ext where correo = '$correo'");
-			$existe = mysqli_num_rows($check_ma_ext);
+			$existe = mysqli_num_rows($check_ma_ext) || mysqli_num_rows($check_ma);
 		}
 		else {
 			$existe = 1;
