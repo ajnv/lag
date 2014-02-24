@@ -6,7 +6,7 @@
 <title>D.I.E.Z. LAG</title>
 <meta name="description" content="">
 <meta name="José García">
-
+<link href='http://diezlag.com/favicon.ico' rel='shortcut icon' type='image/x-icon'>
 <!-- Mobile Specific Meta -->
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -26,14 +26,19 @@
 	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 <![endif]-->
 <!-- Favicon and Apple Icons -->
-<link rel="shortcut icon" href="../img/icons/favicon.ico">
-<link rel="apple-touch-icon" href="../img/icons/apple-touch-icon.png">
-<link rel="apple-touch-icon" sizes="72x72" href="../img/icons/apple-touch-icon-72x72.png">
-<link rel="apple-touch-icon" sizes="114x114" href="../img/icons/apple-touch-icon-114x114.png">
-<link rel="apple-touch-icon" sizes="144x144" href="../img/icons/apple-touch-icon.png">
-<script type="text/javascript" src="js/modernizr-1.0.min.js"></script>
-<script>
 
+
+<style type="text/css">
+body {
+	background-image: url(/img/pattern8.png);
+}
+</style>
+<script type="text/javascript" src="js/modernizr-1.0.min.js"></script>
+
+
+
+
+<script>
 function checkMatricula(str)
 {
 if (str=="")
@@ -182,7 +187,29 @@ function checkOption(str){
     document.getElementById("txtHint_correoch").innerHTML = "";
     document.getElementById("txtHint_matricula").innerHTML = "";
   }
-}</script>
+}
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </head>
 
 <body onLoad="initialize()">
@@ -196,7 +223,7 @@ function checkOption(str){
       <div class="navigation">
         <div class="row">
           <div class="col-md-2 col-sm-3">
-            <h1 class="logo"><a href="index.html"><img class="img-responsive" src="img/logo.png" alt="OnEvent"></a></h1>
+            <h1 class="logo"><a href="index.php"><img class="img-responsive" src="img/logo.png" alt="OnEvent"></a></h1>
           </div>
           <div class="col-md-10 col-sm-9"> 
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -204,13 +231,13 @@ function checkOption(str){
               <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#Navigation"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
             </div>
             <nav>
-              <ul id="Navigation" class="list-inline collapse navbar-collapse">
-                <li><a href="#schedule" title="Schedule">EVENTO E INSCRIPCIONES</a></li>
-                <li><a href="#speakers" title="Speakers">PONENTES</a></li>
-                <li><a href="#partners" title="Partners">PATROCINADORES</a></li>
-                <li><a href="#faq" title="FAQ">PREGUNTAS FRECUENTES</a></li>
+              <ul id="Navigation" class="list-inline collapse navbar-collapse">              <li><a href="#ins" title="FAQ">INSCRIPCIÓN</a></li>
+                <li><a href="#schedule" >PROGRAMA DE EVENTO</a></li>
+                <li><a href="#speakers">PONENTES</a></li>
+                <li><a href="#partners">PATROCINADORES</a></li>
+  
                 <li><a href="#venue" title="Venue">SEDE</a></li>
-                <li><a href="#footer" title="Subscribe to Our Newsletter">CONTACTO</a></li>
+                
               </ul>
             </nav>
           </div>
@@ -225,15 +252,15 @@ function checkOption(str){
   <div id="event-slider" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner"> 
       <!-- begin carousel-slide -->
-      <div class="item active"> <img src="img/2.png"
+      <div class="item active"> <img src="img/2.jpg"
       alt="slide" class="img-responsive"> </div>
       <!-- end carousel-slide --> 
       <!-- begin carousel-slide -->
-      <div class="item"> <img src="img/1.png"
+      <div class="item"> <img src="img/1.jpg"
       alt="slide" class="img-responsive"> </div>
       <!-- end carousel-slide --> 
       <!-- begin carousel-slide -->
-      <div class="item"> <img src="img/3.png"
+      <div class="item"> <img src="img/3.jpg"
       alt="slide" class="img-responsive"> </div>
       <!-- end carousel-slide --> 
     </div>
@@ -264,20 +291,118 @@ function checkOption(str){
             
             
           </div>
-          <div class="col-md-2 col-sm-12 text-center"> <a href="#" class="btn register-trigger"><i class="fa fa-plus-circle"></i> Registro</a>
-            
-           
-           
-          
-           
+          <div class="col-md-2 col-sm-12 text-center"> <a href="#" title="Register For This Event" class="btn register-trigger"><i class="fa fa-plus-circle"></i> Registro</a>
+  <h3 class="regHeading">Registrate Para <span>Este Evento</span></h3>
+<form id="register" method="post" action="registrar.php">
+
+<div class="field-wrapper">
+
+<div class="form-row">
+<label>¿Soy alumno de LAG en la UPSLP?</label>
+<select name="alumno" id="alumno" onChange="checkOption(this.value)" required  >
+<option value="" selected>Seleccionar</option>
+<option value="1">Si</option>
+<option value="0">No</option>
+</select>
+</div>
+
+
+<div class="form-row">
+<label id="lb_matricula" hidden="true"></label>
+<input type="text" name="txt_matricula" id="txt_matricula" maxlength="6" onKeyUp="checkMatricula(this.value)"  hidden="true" placeholder="Matricula" autocomplete="off"/>
+
+<div id="txtHint_matricula"><b></b></div>
+</div>
+
+
+<div class="form-row">
+<label id="lb_institucion" hidden="true"></label>
+<input type="text" name="txt_institucion" id="txt_institucion" maxlength="15" hidden="true" placeholder="Institucion" required />
+</div>
+
+
+
+<div class="form-row clearfix">
+<label id="lb_nombre" hidden="true"></label>
+<input type="text" name="txt_nombre" id="txt_nombre"  hidden="true" placeholder="Nombre" required />
+</div>
+
+
+
+<div class="form-row clearfix">
+<label id="lb_apellidos" hidden="true"></label>
+<input type="text" name="txt_apellidos" id="txt_apellidos" hidden="true" placeholder="Apellidos" required />
+</div>
+
+
+
+<div class="form-row clearfix">
+<label></label>
+<input type="password" name="txt_clave" id="txt_clave" placeholder="Contraseña" required/>
+</div>
+
+
+
+
+<div class="form-row clearfix">
+
+<input type="password" name="txt_clavec" id="txt_clavec" onBlur="checkPasswords()" placeholder="Confirmar Contraseña" required />
+
+<div id="txtHint_clave"><b></b></div>
+
+<div id="txtHint_clave"><b></b></div>
+</div>
 
 
 
 
 
-          </div>
+
+
+<div class="form-row clearfix">
+<label id="lb_correo" hidden="true"></label>
+<input type="text" name="txt_correo" id="txt_correo" onKeyUp="checkCorreo(this.value)"  hidden="true" placeholder="Correo electronico" required  autocomplete="off"/>
+</div>
+
+
+
+<div class="form-row clearfix">
+<label id="lb_correoc" hidden="true"></label>
+<input type="text" name="txt_correoc" id="txt_correoc" onBlur="checkEmails()" hidden="true" placeholder="Confirmar Correo electronico" required autocomplete="off"/>
+<div id="txtHint_correo"><b></b></div>
+<div id="txtHint_correoch"><b></b></div>
+
+</div>
+
+
+  <input type="submit" value="Enviar" class="btn btn-custom btn-lg" />
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+</form>          </div>
         </div>
-        <!--end-row--> 
+        <!--end-row-->             
+
+
+
+
+
+
+
+
+
+
+
       </header>
       <article>
         <h3>¿QUIENES<span> SOMOS?</span></h3>
@@ -299,6 +424,63 @@ function checkOption(str){
 </section>
 <!--END-INTRO-BOX--> 
 
+
+<section id="ins" class="page-block">
+  <div class="container">
+    <div class="section clearfix bottom-margin">
+      <header class="page-head colored clearfix">
+        <h2>Incripción al Evento</h2>
+        <p class="text-muted">En esta sección podrás ver en 5 sencillos pasos, cómo realizar tu inscripción a este evento.  </p>
+      </header>
+      <article><br>
+        <strong>PASO 1: </strong>
+        Identifica el Botón llamado REGISTRO que se encuentra en la primera sección de este sitio web justo a la derecha del contador para la ejecución de este evento.
+       <br><br>
+       <strong> PASO 2 </strong>
+       Da clic en el botón mencionado y procede a responder si eres alumno de la UPSLP de la carrera de LAG. De ser así, procede a llenar el campo de matrícula y posteriormente establece tu contraseña que será utilizado al momento de verificar tus pagos. Esta contraseña tú la estableces según tus conveniencias.
+      <br><br>
+        
+        <strong>PASO 3:</strong>
+        Si tu opción fue que eres una persona Externa de la UPSLP, podrás realizar tu registro al evento completando los datos que se te solicitan en el formulario.
+       <br><br>
+          <strong> PASO 4: </strong> 
+        Una vez que culmines con tu registro independientemente del rol, recibirás un correo electrónico que contiene una liga de confirmación de registro la cual deberás de activar solo siguiendo las instrucciones ahí presentadas.<br>En caso de alumnos de la UPSLP de LAG el correo será recibido en sus cuentas personales de la institución. Para externos el correo será enviado a la cuenta que registres en el formulario.
+        <br><br>
+          <strong>PASO 5:</strong>
+        Próximamente recibirás instrucciones de cómo accesar a tu perfil para verificar tus pagos. 
+        
+
+      </article>
+    </div>
+    </div></section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!--BEGIN-SCHEDULE-->
 <section id="schedule" class="page-block">
   <div class="container">
@@ -307,10 +489,10 @@ function checkOption(str){
       <!-- Nav tabs -->
       <ul class="nav nav-tabs clearfix">
         <li class="active"><a href="#event-schedule" data-toggle="tab"><i class="fa fa-clock-o"></i>
-          <h5>Inscripciones<small>Registro Interno y Externo</small></h5>
+          <h5>Consulta Programa<small></small></h5>
           </a></li>
         <li><a href="#promo" data-toggle="tab"><i class="fa fa-play-circle"></i>
-          <h5>Consulta Programa<small>Descripción</small></h5>
+          <h5>Video Promocional<small>Descripción</small></h5>
           </a></li>
         <li><a href="#event-gallery" data-toggle="tab"><i class="fa fa-picture-o"></i>
           <h5>Instalaciones<small>GYM UPSLP</small></h5>
@@ -323,7 +505,7 @@ function checkOption(str){
       <!-- Tab panes -->
       <div class="tab-content">
         <div class="tab-pane active" id="event-schedule">
-          <h3><i class="fa fa-clock-o"></i><span>Inscripciones</span></h3>
+          <h3><i class="fa fa-clock-o"></i><span>Programa</span></h3>
           <p>Registrate para en la parte superior y una vez confirmada tu sesión podras realizar el pago para el evento </p>
           <div class="row clearfix">
             <div class="col-md-4 col-sm-12 schedule-box">
@@ -522,108 +704,34 @@ function checkOption(str){
         <div class="tab-pane" id="promo">
           <h3><i class="fa fa-play-circle"></i> Video <span>Promocional</span></h3>
           
+            PRÓXIMAMENTE
           
-            <form name="registro" action="registrar.php" method="post">
-<table>
-  <tr>
-    <td><label>Soy alumno de la UPSLP?</label></td>
-    <td>
-      <select name="alumno" id="alumno" onChange="checkOption(this.value)" required>
-        <option value="" selected>Seleccionar</option>
-        <option value="1">Si</option>
-        <option value="0">No</option>
-      </select>
-    </td>
-  </tr>
-  <tr>
-   <td><label id="lb_matricula" hidden="true">Matricula:</label></td>
-   <td><input type="text" name="txt_matricula" id="txt_matricula" maxlength="6" onKeyUp="checkMatricula(this.value)" required hidden="true"/></td>
-  </tr>
-  <tr>
-  <td><div id="txtHint_matricula"><b></b></div></td>
-  </tr>
-  <tr>
-  <tr>
-   <td><label id="lb_institucion" hidden="true">Institucion:</label></td>
-   <td><input type="text" name="txt_institucion" id="txt_institucion" maxlength="15" required hidden="true"/></td>
-  </tr>
-  <tr>
-  <td><label id="lb_nombre" hidden="true">Nombre:</label></td>
-  <td><input type="text" name="txt_nombre" id="txt_nombre" required hidden="true"></td>
-  </tr>
-  <br>
-  <tr>
-  <td><label id="lb_apellidos" hidden="true">Apellidos:</label></td>
-  <td><input type="text" name="txt_apellidos" id="txt_apellidos" required hidden="true"></td>
-  </tr>
-  <br>
-  <tr>
-  <td><label>Contrase&ntilde;a:</label></td>
-  <td><input type="password" name="txt_clave" id="txt_clave" required></td>
-  </tr>
-  <br>
-  <tr>
-  <td><label>Confirmar Contrase&ntilde;a:</label></td>
-  <td><input type="password" name="txt_clavec" id="txt_clavec" onBlur="checkPasswords()" required ></td>
-  </tr><tr>
-  <td><div id="txtHint_clave"><b></b></div></td>
-  </tr>
-  <br>
-  <tr>
-  <td><label id="lb_correo" hidden="true">Correo electronico:</label>
-  <td><input type="text" name="txt_correo" id="txt_correo" onKeyUp="checkCorreo(this.value)" required hidden="true" /></td>
-  </tr>
-  <br>
-  <tr>
-  <td><label id="lb_correoc" hidden="true">Confirmar Correo electronico:</label>
-  <td><input type="text" name="txt_correoc" id="txt_correoc" onBlur="checkEmails()" required hidden="true"/></td>
-  </tr>
-  <br>
-  <tr>
-  <td><div id="txtHint_correo"><b></b></div></td>
-  </tr>
-  <tr>
-  <td><div id="txtHint_correoch"><b></b></div></td>
-  </tr>
-  <tr>
-    <td><input type="submit"/></td>
-    <td><input type="reset" onClick="document.location.reload(true);"/></td>
-  </tr>
-</table>
-</form>
+           
        
         </div>
         <!--end-event-schedule-content-->
         
         <div class="tab-pane" id="event-gallery">
-          <h3><i class="fa fa-picture-o"></i> Galeria de  <span>Eventos Anteriores</span></h3>
-          <p>Descripcion de Eventos Anteriores </p>
+          <h3><i class="fa fa-picture-o"></i> Galeria de  <span>Eventos Anteriores</span>
+          
+          
+
+          
+          
+
+          
+          
+          
+          
+          
+          
+          
+          </h3>          PRÓXIMAMENTE
+     
           <div class="img-grid clearfix">
             <ul id="eg-thumbs" class="eg-thumbs clearfix">
-              <li> <a href="../img/gallery/large/01.jpg" title="Event PhotoGallery" rel="prettyPhoto[gallery]"> <img src="../img/gallery/thumb/01.jpg" alt="Event Photo" class="img-responsive">
-                <div class="img-caption"><span>Image Caption 1</span></div>
-                </a> </li>
-              <li> <a href="../img/gallery/large/02.jpg" title="Event PhotoGallery" rel="prettyPhoto[gallery]"> <img src="../img/gallery/thumb/02.jpg" alt="Event Photo" class="img-responsive">
-                <div class="img-caption"><span>Image Caption 2</span></div>
-                </a> </li>
-              <li> <a href="../img/gallery/large/03.jpg" title="Event PhotoGallery" rel="prettyPhoto[gallery]"> <img src="../img/gallery/thumb/03.jpg" alt="Event Photo" class="img-responsive">
-                <div class="img-caption"><span>Image Caption 3</span></div>
-                </a> </li>
-              <li> <a href="../img/gallery/large/04.jpg" title="Event PhotoGallery" rel="prettyPhoto[gallery]"> <img src="../img/gallery/thumb/04.jpg" alt="Event Photo" class="img-responsive">
-                <div class="img-caption"><span>Image Caption 4</span></div>
-                </a> </li>
-              <li> <a href="../img/gallery/large/05.jpg" title="Event PhotoGallery" rel="prettyPhoto[gallery]"> <img src="../img/gallery/thumb/05.jpg" alt="Event Photo" class="img-responsive">
-                <div class="img-caption"><span>Image Caption 5</span></div>
-                </a> </li>
-              <li> <a href="../img/gallery/large/06.jpg" title="Event PhotoGallery" rel="prettyPhoto[gallery]"> <img src="../img/gallery/thumb/06.jpg" alt="Event Photo" class="img-responsive">
-                <div class="img-caption"><span>Image Caption 6</span></div>
-                </a> </li>
-              <li> <a href="../img/gallery/large/07.jpg" title="Event PhotoGallery" rel="prettyPhoto[gallery]"> <img src="../img/gallery/thumb/07.jpg" alt="Event Photo" class="img-responsive">
-                <div class="img-caption"><span>Image Caption 7</span></div>
-                </a> </li>
-              <li> <a href="../img/gallery/large/08.jpg" title="Event PhotoGallery" rel="prettyPhoto[gallery]"> <img src="../img/gallery/thumb/08.jpg" alt="Event Photo" class="img-responsive">
-                <div class="img-caption"><span>Image Caption 8</span></div>
-                </a> </li>
+             
+           
             </ul>
           </div>
           <!--end-img-grid--> 
@@ -633,12 +741,63 @@ function checkOption(str){
         
         <div class="tab-pane" id="exec-presence">
           <h3><i class="fa fa-star"></i> Comite <span>Organizador</span></h3>
-          <p>Nuestro comite Organizador se ha preoupado por tener las mejores platicas con ponentes expertos en su materia, con temas actuales y de interes general  </p>
+          <p></p>
           <ul class="li-blocks">
-            <li><strong>Nombre</strong> - Presidente</li>
-            <li><strong>Nombre</strong> - vice</li>
+            <li><strong>Víctor Delgado  - Presidente</strong></li>
+            <li><strong>presidencia@diezlag.com</strong></li>
  
           </ul>
+          
+          
+          <ul class="li-blocks">
+            <li><strong>Víctor Delgado  - Presidente</strong></li>
+            <li><strong>vice-presidencia@diezlag.com</strong></li>
+ 
+          </ul>
+          
+          
+          
+          
+          <ul class="li-blocks">
+            <li><strong>Griselda Ordaz  - Logística</strong></li>
+            <li><strong>logistica@diezlag.com</strong></li>
+ 
+          </ul>
+          
+          
+               <ul class="li-blocks">
+            <li><strong>Berenice Martínez  - Eventos</strong></li>
+            <li><strong>eventos@diezlag.com</strong></li>
+ 
+          </ul>
+          
+               <ul class="li-blocks">
+            <li><strong>Alejandro González  - Patrocinio</strong></li>
+            <li><strong>patrocinio@diezlag.com</strong></li>
+ 
+          </ul>
+          
+          
+          
+               <ul class="li-blocks">
+            <li><strong>Karen Delgadillo  - Comunicación</strong></li>
+            <li><strong>comunicacion@diezlag.com</strong></li>
+ 
+          </ul>
+          
+            <ul class="li-blocks">
+            <li><strong>Sara Madigan  - Ponentes</strong></li>
+            <li><strong>ponentes@diezlag.com</strong></li>
+ 
+          </ul>
+            <ul class="li-blocks">
+            <li><strong>Erick Campos  - Finanzas</strong></li>
+            <li><strong>finanzas@diezlag.com</strong></li>
+ 
+          </ul>
+          
+          
+          
         </div>
         <!--end-event-schedule-content--> 
       </div>
@@ -881,7 +1040,29 @@ Trabajó para Cummins generation technologies desde el 2005 hasta finales del 20
 
 <a href="http://www.tortasrichard.com/" title="Tortas Richard" target="_blank"> <img class="img-responsive" src="img/partners/2.png"/> </a> 
 
-<a href="#" title="Canal 13 San Luis Potosi. S.L.P."> <img class="img-responsive" src="img/partners/5.png"/> </a> 
+<a href="#" title="Canal 13 San Luis Potosi. S.L.P." target="_blank"> <img class="img-responsive" src="img/partners/5.png"/> </a> 
+
+
+
+
+
+
+<a href="http://www.rinconhuasteco.com/" title="Rincón Huasteco" target="_blank"> <img class="img-responsive" src="img/partners/8.png"/> </a> 
+
+<a href="http://www.ieseg.edu.mx/" title="IESEG
+Instituto de Estudios Superiores en Gastronomía
+" target="_blank"> <img class="img-responsive" src="img/partners/9.png"/> </a>
+
+<a href="Lágrima de Luna" title="Canal 13 San Luis Potosi. S.L.P." target="_blank"> <img class="img-responsive" src="img/partners/10.png"/> </a> 
+
+<a href="#" title="SAAABE! revista" target="_blank"> <img class="img-responsive" src="img/partners/11.png"/> </a> 
+<a href="#" title="Jolzan" target="_blank"> <img class="img-responsive" src="img/partners/12.png"/> </a>
+<a href="http://www.facebook.com/pages/Chocolates-La-Frontera/107999435899277?fref=ts" title="Chocolates la Frontera" target="_blank"> <img class="img-responsive" src="img/partners/7.png"/> </a>
+
+
+
+<strong>
+</strong>
 
 </div>
 </div>
@@ -890,47 +1071,7 @@ Trabajó para Cummins generation technologies desde el 2005 hasta finales del 20
 <!--END-PARTNERS--> 
 
 <!--BEGIN-FAQ-->
-<section id="faq" class="page-block">
-  <div class="container">
-    <div class="section">
-      <header class="page-head">
-        <h2>Pregunstas Frecuentes</h2>
-        <p class="text-muted">Sobre El evento</p>
-      </header>
-      <article class="row">
-        <div class="panel-group clearfix" id="questions">
-          <div class="col-md-6 col-sm-12">
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#questions" href="#question1"> 1 <span>Pregunta 1</span> </a> </h4>
-              </div>
-              <div id="question1" class="panel-collapse collapse">
-                <div class="panel-body">
-                  <p>Respuesta</p>
-                </div>
-              </div>
-            </div>
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#questions" href="#question2"> 2 <span>Pregunta 2</span> </a> </h4>
-              </div>
-              <div id="question2" class="panel-collapse collapse">
-                <div class="panel-body">
-                  <p>Respuesta</p>
-                </div>
-              </div>
-            </div>
-           
-          </div>
-        </div>
-                    <!--end-of-column-6--> 
-      
-        <!--end-of-accordion--> 
-        
-      </article>
-    </div>
-  </div>
-</section>
+n>
 <!--END-FAQ--> 
 
 <!--BEGIN-VENUE-->
@@ -956,25 +1097,22 @@ Trabajó para Cummins generation technologies desde el 2005 hasta finales del 20
               </ul>
             </div>
           </div>
+          
           <div class="col-md-4 col-sm-12 column directions-input">
             <div class="column-content">
               <h3>Obtener <span>Ruta</span></h3>
-              <form action="http://www.saptarang.org/routebeschrijving" onSubmit="calcRoute();return false;" id="routeForm">
+            <form action="http://www.saptarang.org/routebeschrijving" onSubmit="calcRoute();return false;" id="routeForm">
                 <label for="routeStart"><strong>Desde</strong></label>
-                <input type="text" id="routeStart" value="">
+                <input type="text" id="routeStart" value="" placeholder="Calle, Ciudad">
                 <label for="travelMode"><strong>Por:</strong></label>
-                <input type="text" id="routeVia">
+                <input type="text" id="routeVia" placeholder="Avenida ó Calle (Opcional)">
                 <label>Viajo En:</label>
                 <div class="clearfix">
                   <label class="radio-option">
                     <input type="radio" name="travelMode" value="DRIVING" checked />
                     Automovil</label>
-                  <label class="radio-option">
-                    <input type="radio" name="travelMode" value="BICYCLING" />
-                    Bicicleta</label>
-                  <label class="radio-option">
-                    <input type="radio" name="travelMode" value="TRANSIT" />
-                    Transporte Publico</label>
+                  
+                  
                   <label class="radio-option last">
                     <input type="radio" name="travelMode" value="WALKING" />
                     Caminando</label>
@@ -1027,7 +1165,7 @@ Trabajó para Cummins generation technologies desde el 2005 hasta finales del 20
         </div>
       </header>
       <p class="text-center"> <span class="year"></span>  <br>
-        </p>
+      </p>
       <a href="#top" class="top"><i class="fa fa-arrow-up fa-lg"></i></a> </div>
     <!--end-of-section--> 
   </div>

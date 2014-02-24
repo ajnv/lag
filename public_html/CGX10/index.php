@@ -32,8 +32,11 @@
 <link rel="apple-touch-icon" sizes="114x114" href="../img/icons/apple-touch-icon-114x114.png">
 <link rel="apple-touch-icon" sizes="144x144" href="../img/icons/apple-touch-icon.png">
 <script type="text/javascript" src="js/modernizr-1.0.min.js"></script>
-<script>
 
+
+
+
+<script>
 function checkMatricula(str)
 {
 if (str=="")
@@ -182,10 +185,32 @@ function checkOption(str){
     document.getElementById("txtHint_correoch").innerHTML = "";
     document.getElementById("txtHint_matricula").innerHTML = "";
   }
-}</script>
+}
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </head>
 
-<body onLoad="initialize()">
+<body background="img/pattern7.png" onLoad="initialize()">
 
 
 
@@ -264,20 +289,118 @@ function checkOption(str){
             
             
           </div>
-          <div class="col-md-2 col-sm-12 text-center"> <a href="#" class="btn register-trigger"><i class="fa fa-plus-circle"></i> Registro</a>
-            
-           
-           
-          
-           
+          <div class="col-md-2 col-sm-12 text-center"> <a href="#" title="Register For This Event" class="btn register-trigger"><i class="fa fa-plus-circle"></i> Registro</a>
+  <h3 class="regHeading">Registrate Para <span>Este Evento</span></h3>
+<form id="register" method="post" action="registrar.php">
+
+<div class="field-wrapper">
+
+<div class="form-row">
+<label>¿Soy alumno de LAG en la UPSLP?</label>
+<select name="alumno" id="alumno" onChange="checkOption(this.value)" required  >
+<option value="" selected>Seleccionar</option>
+<option value="1">Si</option>
+<option value="0">No</option>
+</select>
+</div>
+
+
+<div class="form-row">
+<label id="lb_matricula" hidden="true"></label>
+<input type="text" name="txt_matricula" id="txt_matricula" maxlength="6" onKeyUp="checkMatricula(this.value)"  hidden="true" placeholder="Matricula"/>
+
+<div id="txtHint_matricula"><b></b></div>
+</div>
+
+
+<div class="form-row">
+<label id="lb_institucion" hidden="true"></label>
+<input type="text" name="txt_institucion" id="txt_institucion" maxlength="15" hidden="true" placeholder="Institucion" required />
+</div>
+
+
+
+<div class="form-row clearfix">
+<label id="lb_nombre" hidden="true"></label>
+<input type="text" name="txt_nombre" id="txt_nombre"  hidden="true" placeholder="Nombre" required />
+</div>
+
+
+
+<div class="form-row clearfix">
+<label id="lb_apellidos" hidden="true"></label>
+<input type="text" name="txt_apellidos" id="txt_apellidos" hidden="true" placeholder="Apellidos" required />
+</div>
+
+
+
+<div class="form-row clearfix">
+<label></label>
+<input type="password" name="txt_clave" id="txt_clave" placeholder="Contraseña" required/>
+</div>
+
+
+
+
+<div class="form-row clearfix">
+
+<input type="password" name="txt_clavec" id="txt_clavec" onBlur="checkPasswords()" placeholder="Confirmar Contraseña" required />
+
+<div id="txtHint_clave"><b></b></div>
+
+<div id="txtHint_clave"><b></b></div>
+</div>
 
 
 
 
 
-          </div>
+
+
+<div class="form-row clearfix">
+<label id="lb_correo" hidden="true"></label>
+<input type="text" name="txt_correo" id="txt_correo" onKeyUp="checkCorreo(this.value)"  hidden="true" placeholder="Correo electronico" required />
+</div>
+
+
+
+<div class="form-row clearfix">
+<label id="lb_correoc" hidden="true"></label>
+<input type="text" name="txt_correoc" id="txt_correoc" onBlur="checkEmails()" hidden="true" placeholder="Confirmar Correo electronico" required />
+<div id="txtHint_correo"><b></b></div>
+<div id="txtHint_correoch"><b></b></div>
+
+</div>
+
+
+  <input type="submit" value="Enviar" class="btn btn-custom btn-lg" />
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+</form>          </div>
         </div>
-        <!--end-row--> 
+        <!--end-row-->             
+
+
+
+
+
+
+
+
+
+
+
       </header>
       <article>
         <h3>¿QUIENES<span> SOMOS?</span></h3>
@@ -523,80 +646,27 @@ function checkOption(str){
           <h3><i class="fa fa-play-circle"></i> Video <span>Promocional</span></h3>
           
           
-            <form name="registro" action="registrar.php" method="post">
-<table>
-  <tr>
-    <td><label>Soy alumno de la UPSLP?</label></td>
-    <td>
-      <select name="alumno" id="alumno" onChange="checkOption(this.value)" required>
-        <option value="" selected>Seleccionar</option>
-        <option value="1">Si</option>
-        <option value="0">No</option>
-      </select>
-    </td>
-  </tr>
-  <tr>
-   <td><label id="lb_matricula" hidden="true">Matricula:</label></td>
-   <td><input type="text" name="txt_matricula" id="txt_matricula" maxlength="6" onKeyUp="checkMatricula(this.value)" required hidden="true"/></td>
-  </tr>
-  <tr>
-  <td><div id="txtHint_matricula"><b></b></div></td>
-  </tr>
-  <tr>
-  <tr>
-   <td><label id="lb_institucion" hidden="true">Institucion:</label></td>
-   <td><input type="text" name="txt_institucion" id="txt_institucion" maxlength="15" required hidden="true"/></td>
-  </tr>
-  <tr>
-  <td><label id="lb_nombre" hidden="true">Nombre:</label></td>
-  <td><input type="text" name="txt_nombre" id="txt_nombre" required hidden="true"></td>
-  </tr>
-  <br>
-  <tr>
-  <td><label id="lb_apellidos" hidden="true">Apellidos:</label></td>
-  <td><input type="text" name="txt_apellidos" id="txt_apellidos" required hidden="true"></td>
-  </tr>
-  <br>
-  <tr>
-  <td><label>Contrase&ntilde;a:</label></td>
-  <td><input type="password" name="txt_clave" id="txt_clave" required></td>
-  </tr>
-  <br>
-  <tr>
-  <td><label>Confirmar Contrase&ntilde;a:</label></td>
-  <td><input type="password" name="txt_clavec" id="txt_clavec" onBlur="checkPasswords()" required ></td>
-  </tr><tr>
-  <td><div id="txtHint_clave"><b></b></div></td>
-  </tr>
-  <br>
-  <tr>
-  <td><label id="lb_correo" hidden="true">Correo electronico:</label>
-  <td><input type="text" name="txt_correo" id="txt_correo" onKeyUp="checkCorreo(this.value)" required hidden="true" /></td>
-  </tr>
-  <br>
-  <tr>
-  <td><label id="lb_correoc" hidden="true">Confirmar Correo electronico:</label>
-  <td><input type="text" name="txt_correoc" id="txt_correoc" onBlur="checkEmails()" required hidden="true"/></td>
-  </tr>
-  <br>
-  <tr>
-  <td><div id="txtHint_correo"><b></b></div></td>
-  </tr>
-  <tr>
-  <td><div id="txtHint_correoch"><b></b></div></td>
-  </tr>
-  <tr>
-    <td><input type="submit"/></td>
-    <td><input type="reset" onClick="document.location.reload(true);"/></td>
-  </tr>
-</table>
-</form>
+           
        
         </div>
         <!--end-event-schedule-content-->
         
         <div class="tab-pane" id="event-gallery">
-          <h3><i class="fa fa-picture-o"></i> Galeria de  <span>Eventos Anteriores</span></h3>
+          <h3><i class="fa fa-picture-o"></i> Galeria de  <span>Eventos Anteriores</span>
+          
+          
+          
+          
+          
+          FGDGDF
+          
+          
+          
+          
+          
+          
+          
+          </h3>
           <p>Descripcion de Eventos Anteriores </p>
           <div class="img-grid clearfix">
             <ul id="eg-thumbs" class="eg-thumbs clearfix">
@@ -890,47 +960,7 @@ Trabajó para Cummins generation technologies desde el 2005 hasta finales del 20
 <!--END-PARTNERS--> 
 
 <!--BEGIN-FAQ-->
-<section id="faq" class="page-block">
-  <div class="container">
-    <div class="section">
-      <header class="page-head">
-        <h2>Pregunstas Frecuentes</h2>
-        <p class="text-muted">Sobre El evento</p>
-      </header>
-      <article class="row">
-        <div class="panel-group clearfix" id="questions">
-          <div class="col-md-6 col-sm-12">
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#questions" href="#question1"> 1 <span>Pregunta 1</span> </a> </h4>
-              </div>
-              <div id="question1" class="panel-collapse collapse">
-                <div class="panel-body">
-                  <p>Respuesta</p>
-                </div>
-              </div>
-            </div>
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#questions" href="#question2"> 2 <span>Pregunta 2</span> </a> </h4>
-              </div>
-              <div id="question2" class="panel-collapse collapse">
-                <div class="panel-body">
-                  <p>Respuesta</p>
-                </div>
-              </div>
-            </div>
-           
-          </div>
-        </div>
-                    <!--end-of-column-6--> 
-      
-        <!--end-of-accordion--> 
-        
-      </article>
-    </div>
-  </div>
-</section>
+n>
 <!--END-FAQ--> 
 
 <!--BEGIN-VENUE-->
@@ -959,28 +989,7 @@ Trabajó para Cummins generation technologies desde el 2005 hasta finales del 20
           <div class="col-md-4 col-sm-12 column directions-input">
             <div class="column-content">
               <h3>Obtener <span>Ruta</span></h3>
-              <form action="http://www.saptarang.org/routebeschrijving" onSubmit="calcRoute();return false;" id="routeForm">
-                <label for="routeStart"><strong>Desde</strong></label>
-                <input type="text" id="routeStart" value="">
-                <label for="travelMode"><strong>Por:</strong></label>
-                <input type="text" id="routeVia">
-                <label>Viajo En:</label>
-                <div class="clearfix">
-                  <label class="radio-option">
-                    <input type="radio" name="travelMode" value="DRIVING" checked />
-                    Automovil</label>
-                  <label class="radio-option">
-                    <input type="radio" name="travelMode" value="BICYCLING" />
-                    Bicicleta</label>
-                  <label class="radio-option">
-                    <input type="radio" name="travelMode" value="TRANSIT" />
-                    Transporte Publico</label>
-                  <label class="radio-option last">
-                    <input type="radio" name="travelMode" value="WALKING" />
-                    Caminando</label>
-                </div>
-                <input type="submit" value="Obtener Ruta" class="btn btn-block">
-              </form>
+            
             </div>
           </div>
           <div class="col-md-5 col-sm-12 column directions-results">
@@ -1027,7 +1036,7 @@ Trabajó para Cummins generation technologies desde el 2005 hasta finales del 20
         </div>
       </header>
       <p class="text-center"> <span class="year"></span>  <br>
-        </p>
+      </p>
       <a href="#top" class="top"><i class="fa fa-arrow-up fa-lg"></i></a> </div>
     <!--end-of-section--> 
   </div>
