@@ -406,14 +406,15 @@ function checkOption(str){
       </header>
       <article>
         <h3>¿QUIENES<span> SOMOS?</span></h3>
-    <P>    La Semana de Administración es un evento académico llevado a cabo  por alumnos de la generación que comprende el  7° y 8° semestre de la Licenciatura en Administración y Gestión de la UNIVERSIDAD POLITÉCNICA DE SAN LUIS POTOSÍ. Se realiza en el mes de mayo en las instalaciones de la misma  y tiene como objetivo  reforzar los conocimientos, aptitudes y habilidades, a fines de una forma práctica y dinámica.<P>La Semana de Administración y Gestión se  integra por actividades como  Conferencias Magistrales Nacionales e Internacionales, Talleres, Foros Empresariales  e inclusive ferias de empleo.
-    <P>espués de diez años de  mejorar la calidad de este magno evento, la Décima Semana de Administración y  Gestión se titula &ldquo;Un Profesionista de D.I.E.Z.&rdquo;, donde se abordarán siguientes  temas:    
+    <P>    La Semana de Administración es un evento académico llevado a cabo  por alumnos de la generación que comprende el  7° y 8° semestre de la Licenciatura en Administración y Gestión de la UNIVERSIDAD POLITÉCNICA DE SAN LUIS POTOSÍ. Se realiza en el mes de mayo en las instalaciones de la misma  y tiene como objetivo  reforzar los conocimientos, aptitudes y habilidades, a fines de una forma práctica y dinámica.
+    <P>La Semana de Administración y Gestión se  integra por actividades como  conferencias magistrales nacionales e Internacionales, talleres, foros empresariales  e inclusive ferias de empleo.
+    <P>Después de diez años de  mejorar la calidad de este magno evento, la Décima Semana de Administración y  Gestión se titula &ldquo;Un Profesionista de D.I.E.Z.&rdquo;, donde se abordarán siguientes  temas:    
     <ul type="square">
-      <li>Entorno       Globalizado</li>
-      <li>Modelos       de negocios</li>
-      <li>Reformas       políticas de México</li>
-      <li>Tecnología       fusionada con la creatividad</li>
-      <li>Desarrollo       de proyectos</li>
+      <li>Entorno       Globalizado.</li>
+      <li>Modelos       de negocios.</li>
+      <li>Reformas       políticas de México.</li>
+      <li>Tecnología       fusionada con la creatividad.</li>
+      <li>Desarrollo       de proyectos.</li>
       
     </ul>
     <P>        
@@ -434,10 +435,10 @@ function checkOption(str){
       </header>
       <article><br>
         <strong>PASO 1: </strong>
-        Identifica el Botón llamado REGISTRO que se encuentra en la primera sección de este sitio web justo a la derecha del contador para la ejecución de este evento.
+        Identifica el Botón llamado &quot;REGISTRO&quot; que se encuentra en la primera sección de este sitio web justo a la derecha del contador para la ejecución de este evento.
        <br><br>
        <strong> PASO 2 </strong>
-       Da clic en el botón mencionado y procede a responder si eres alumno de la UPSLP de la carrera de LAG. De ser así, procede a llenar el campo de matrícula y posteriormente establece tu contraseña que será utilizado al momento de verificar tus pagos. Esta contraseña tú la estableces según tus conveniencias.
+       Da click en el botón mencionado y procede a responder si eres alumno de la UPSLP de la carrera de LAG. De ser así, procede a llenar el campo de matrícula y posteriormente establece tu contraseña que será utilizado al momento de verificar tus pagos. Esta contraseña tú la estableces según tus conveniencias.
       <br><br>
         
         <strong>PASO 3:</strong>
@@ -506,7 +507,7 @@ function checkOption(str){
       <div class="tab-content">
         <div class="tab-pane active" id="event-schedule">
           <h3><i class="fa fa-clock-o"></i><span>Programa</span></h3>
-          <p>Registrate para en la parte superior y una vez confirmada tu sesión podras realizar el pago para el evento </p>
+          <p>Regístrate para en la parte superior y una vez confirmada tu sesión podr&aacute;s realizar el pago para el evento </p>
           <div class="row clearfix">
             <div class="col-md-4 col-sm-12 schedule-box">
               <h6 class="section-head"><span>Día 1</span>MIERCOLES</h6>
@@ -821,9 +822,9 @@ function checkOption(str){
 
 <li>Conocer las nuevas reformas de México y analizar el impacto directo que tiene en la administración. 
 </li>
-<li>Crear consciencia de la implementación de la tecnología fusionada con la creatividad, abriéndose camino en las nuevas tendencias del mercado, así como la implementación de la misma en tiempo real a los procesos administrativos.</li>
+<li>Crear conciencia de la implementación de la tecnología fusionada con la creatividad, abriéndose camino en las nuevas tendencias del mercado, así como la implementación de la misma en tiempo real a los procesos administrativos.</li>
 
-<li>Impulsar a los profesionistas a la implementación y desarrollo de sus proyectos Y Brindar al profesionista las estrategias para la consolidación de sus metas.</li>
+<li>Impulsar a los profesionistas a la implementación y desarrollo de sus proyectos y brindar al profesionista las estrategias para la consolidación de sus metas.</li>
 </p>
       </article>
     </div>
@@ -842,8 +843,8 @@ function checkOption(str){
       <div class="col-md-4 col-sm-6 col-xs-6">
         <div class="section no-padding">
           <figure> <img src="img/speakers/speaker1.jpg"alt="Speaker" class="img-responsive" />
-            <figcaption class="speaker-info"> Es una reconocida académica , periodista, politóloga y Escritora mexicana. Denise es columnista de la revista Proceso, editorialista del periódico Reforma, y participa en la edición semanal de Reporte Índigo con su sección Código Dresser.
-Es especialista en ciencias políticas, es profesora en el Instituto Tecnológico Autónomo de México (ITAM) donde ha impartido cursos de política comparada y política mexicana contemporánea desde 1991.
+            <figcaption class="speaker-info"> Es una reconocida académica , periodista, politóloga y escritora mexicana. Denise es columnista de la revista Proceso, editorialista del periódico Reforma, y participa en la edición semanal de Reporte Índigo con su sección Código Dreseer.
+Es especialista en ciencias políticas; profesora en el Instituto Tecnológico Autónomo de México (ITAM) donde ha impartido cursos de política comparada y política mexicana contemporánea desde 1991.
  </figcaption>
           </figure>
           <div class="speaker clearfix">
@@ -876,7 +877,7 @@ Fue director para Disney Special Events Group donde escribió y dirigió varios 
       <div class="col-md-4 col-sm-6 col-xs-6">
         <div class="section no-padding">
           <figure> <img src="img/speakers/speaker3.jpg"alt="Speaker" class="img-responsive" />
-            <figcaption class="speaker-info">Ing. eléctrico con maestría en administración de negocios con enfoque en finanzas.
+            <figcaption class="speaker-info">Ing. Eléctrico con maestría en Administración de Negocios con enfoque en Finanzas.
 Trabajó para Cummins generation technologies desde el 2005 hasta finales del 2013. Pasando de ingeniero en manufactura hasta convertirse en lider en excelencia operativo.
  </figcaption>
           </figure>
@@ -898,7 +899,7 @@ Trabajó para Cummins generation technologies desde el 2005 hasta finales del 20
       <div class="col-md-4 col-sm-6 col-xs-6">
         <div class="section no-padding no-margin">
           <figure> <img src="img/speakers/speaker4.jpg"alt="Speaker" class="img-responsive" />
-            <figcaption class="speaker-info"> Somos una asociación encargada de empoderar a los jóvenes de México a través de conferencias, talleres, foros y actividades sociales para que puedan realizar sus proyectos de vida. </figcaption>
+            <figcaption class="speaker-info"> Son una asociación encargada de empoderar a los jóvenes de México a través de conferencias, talleres, foros y actividades sociales para que puedan realizar sus proyectos de vida. </figcaption>
           </figure>
           <div class="speaker clearfix">
             <div class="col-md-10 col-sm-9 col-xs-9">
@@ -913,7 +914,7 @@ Trabajó para Cummins generation technologies desde el 2005 hasta finales del 20
       <div class="col-md-4 col-sm-6 col-xs-6">
         <div class="section no-padding no-margin">
           <figure> <img src="img/speakers/speaker5.jpg"alt="Speaker" class="img-responsive" />
-            <figcaption class="speaker-info">Tiene acumulado 30 años de experiencia en el análisis de la economía mexicana y sus perspectivas, tiempo durante el cual fue el Economista Principal de México para varias instituciones financieras globales y consultorías internacionales.  Empezó su carrera profesional construyendo modelos macroeconométricos para el gobierno mexicano y Wharton Econometrics.  </figcaption>
+            <figcaption class="speaker-info">Tiene acumulado 30 años de experiencia en el análisis de la economía mexicana y sus perspectivas, tiempo durante el cual fue el Economista Principal de México para varias instituciones financieras globales y consultorías internacionales.  Empezó su carrera profesional construyendo modelos macroeconométricos para el Gobierno Mexicano y Wharton Econometrics.  </figcaption>
           </figure>
           <div class="speaker clearfix">
             <div class="col-md-10 col-sm-9 col-xs-9">
@@ -1022,7 +1023,7 @@ Trabajó para Cummins generation technologies desde el 2005 hasta finales del 20
     <div class="section">
       <header class="page-head">
         <h2>Patrocinadores</h2>
-        <p class="text-muted">Empresas preocupadas por la preparacion de los jovenes que impulsan este evento</p>
+        <p class="text-muted">Empresas preocupadas por la preparaci&oacute;n de los j&oacute;venes que impulsan este evento</p>
       </header>
       <article>
         <p></p>
